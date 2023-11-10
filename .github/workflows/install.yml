@@ -40,7 +40,7 @@ jobs:
   Step2:
     # The type of runner that the job will run on
     env:
-      JOB_RESULT: "Success"
+      JOB_RESULT: "Failure"
     runs-on: ubuntu-latest
     needs : Step1
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -48,10 +48,12 @@ jobs:
         # Runs a single command using the runners shell
         - name: Send greeting
           run: |
+            my_result = $JOB_RESULT
             echo "Hello ${{ inputs.name }}"
             echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
             echo "this is the message : " $MY_VAR "the job result :" $JOB_RESULT
-  Step3:
+            echo $my_result >> $GITHUB_OUTPUT
+  Log:
     # The type of runner that the job will run on
     env:
       JOB_RESULT: "Success"
@@ -61,8 +63,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
         # Runs a single command using the runners shell
-        - name: Send greeting
+        - name: Log Message
           run: |
             echo "Hello ${{ inputs.name }}"
-            echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+            echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
             echo "this is the message : " $MY_VAR "the job result :" $JOB_RESULT
+            if [${{needs.Step2.outputs.my_result}}] == 'Failure'
+             echo "got this [${{steps.Step2.outputs.my_result}}]"
