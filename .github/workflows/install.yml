@@ -36,10 +36,11 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
-      env:
-        JOB_RESULT: "Success"
+
   Step2:
     # The type of runner that the job will run on
+    env:
+      JOB_RESULT: "Success"
     runs-on: ubuntu-latest
     needs : Step1
     # Steps represent a sequence of tasks that will be executed as part of the job
