@@ -18,7 +18,10 @@ on:
         # The data type of the input
         type: string
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  MY_VAR : "Hello Mike"
+
+        # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
   Step1:
@@ -41,3 +44,4 @@ jobs:
           run: |
             echo "Hello ${{ inputs.name }}"
             echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+            echo "this is the message : " $MY_VAR
