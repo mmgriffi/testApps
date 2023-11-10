@@ -58,7 +58,7 @@ jobs:
     env:
       JOB_RESULT: "Success"
     runs-on: ubuntu-latest
-    needs : Step1
+    needs : [Step2,Step1]
     if: needs.Step1.result == 'success'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -68,5 +68,4 @@ jobs:
             echo "Hello ${{ inputs.name }}"
             echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
             echo "this is the message : " $MY_VAR "the job result :" $JOB_RESULT
-            if [${{needs.Step2.outputs.my_result}}] == 'Failure'
-             echo "got this [${{steps.Step2.outputs.my_result}}]"
+            echo "got this [${{needs.Step2.outputs.my_result}}]"
