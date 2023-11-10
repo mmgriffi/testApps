@@ -20,6 +20,9 @@ on:
 
 env:
   MY_VAR : "Hello Mike"
+  VERSION : "1.1.1"
+  APPNAME : "testAPPs"
+
 
         # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,6 +36,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
+      env:
+        JOB_RESULT: "Success"
   Step2:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -44,4 +49,4 @@ jobs:
           run: |
             echo "Hello ${{ inputs.name }}"
             echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-            echo "this is the message : " $MY_VAR
+            echo "this is the message : " $MY_VAR "the job result :" $JOB_RESULT
