@@ -38,4 +38,6 @@ jobs:
     steps:
         # Runs a single command using the runners shell
         - name: Send greeting
-          run: echo "Hello ${{ inputs.name }}"
+          run: |
+            echo "Hello ${{ inputs.name }}"
+            echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
