@@ -51,7 +51,7 @@ jobs:
             echo "Hello ${{ inputs.name }}"
             echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
             echo "this is the message : " $MY_VAR "the job result :" $JOB_RESULT
-            echo "$JOB_RESULT" >> $GITHUB_OUTPUT
+            echo "$JOB_RESULT" >> "$GITHUB_OUTPUT"
   Log:
     # The type of runner that the job will run on
     env:
