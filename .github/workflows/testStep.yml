@@ -15,3 +15,4 @@ jobs:
       - name: Run another script
         id : step2
         run : echo hello again
+              echo "more info ${{join(steps.step1.outputs.*, '\n')}}"
