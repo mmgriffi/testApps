@@ -1,5 +1,3 @@
-name: Octo Organization CI
-
 on:
  workflow_dispatch
 
@@ -9,9 +7,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
-      - id: step1
-        run: echo Hello from Octo Organization
-             echo Hope we can run another
-            
 
+      - name: Run a one-line script
+      - id : step1
+        run: echo Hello from Octo Organization
