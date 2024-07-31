@@ -12,3 +12,4 @@ jobs:
 
       - name: Run a one-line script
         run: echo Hello from Octo Organization
+             echo Hope we can run another
