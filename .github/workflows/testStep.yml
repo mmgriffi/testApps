@@ -12,7 +12,9 @@ jobs:
       - name: Run a one-line script
         id : step1
         run: echo Hello from Octo Organization
+             my_var="failure"
+             echo"my_var=$my_var" >> $GITHUB_OUTPUT
       - name: Run another script
         id : step2
         run : echo hello again
-              echo "more info ${{join(steps.step1.outputs.*, '\n')}}"
+              echo "Output [${{steps.step1.outputs.my_var}}]"
