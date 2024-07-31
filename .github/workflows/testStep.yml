@@ -13,6 +13,7 @@ jobs:
         id : "step1"
         run: echo Hello from Octo Organization
              my_var="failure"
+             echo "Output [$my_var]"
              echo"my_var=$my_var" >> $GITHUB_OUTPUT
       - name: Run another script
         id : "step2"
