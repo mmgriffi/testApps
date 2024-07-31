@@ -11,5 +11,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
+      - id: step1
+        run: echo Hello from Octo Organization
+             echo Hope we can run another
+             
+      - name: Run another one-line script
+      - id: step2
         run: echo Hello from Octo Organization
              echo Hope we can run another
